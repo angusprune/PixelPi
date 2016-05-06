@@ -1,4 +1,4 @@
-import spidev
+#import spidev
 from colors import *
 from pprint import pprint
 
