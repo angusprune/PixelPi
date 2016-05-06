@@ -1,5 +1,4 @@
 import spidev
-import argparse
 from colors import *
 
 spi = spidev.SpiDev()
@@ -16,7 +15,7 @@ def all_on():
     pixel_output = bytearray(num_leds * PIXEL_SIZE + 3)
     for led in range(num_leds):
         pixel_output[led * PIXEL_SIZE:] = filter_pixel(WHITE, 1)
-    spi.writebytes(pixel_output)
+    spi.write(pixel_output)
     spi.flush()
 
 def filter_pixel(input_pixel, brightness):
