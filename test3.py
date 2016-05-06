@@ -1,5 +1,5 @@
 import ws2801
-import pprint from pprint
+from pprint import pprint
 
 leds = ws2801.WS2801_Chain()
 
