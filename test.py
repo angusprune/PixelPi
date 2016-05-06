@@ -3,6 +3,7 @@ from colors import *
 from pprint import pprint
 
 spi = spidev.SpiDev()
+spi.open(0,0)
 
 num_leds = 20
 PIXEL_SIZE = 3
@@ -29,7 +30,6 @@ def filter_pixel(input_pixel, brightness):
     output_pixel[0] = gamma[input_pixel[0]]
     output_pixel[1] = gamma[input_pixel[1]]
     output_pixel[2] = gamma[input_pixel[2]]
-    pprint(output_pixel)
     return output_pixel
 
 
