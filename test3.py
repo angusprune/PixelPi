@@ -8,4 +8,4 @@ leds.write()
 
 leds.all_on()
 leds.write()
-pprint leds
+pprint(leds)
