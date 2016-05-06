@@ -3,7 +3,7 @@ import csv
 import socket
 import time
 
-import Image
+#import Image
 
 # 3 bytes per pixel
 PIXEL_SIZE = 3
@@ -206,42 +206,42 @@ def pixelinvaders():
         write_stream(pixels)
         spidev.flush()
 
-
-def strip():
-    img = Image.open(args.filename).convert("RGB")
-    input_image = img.load()
-    image_width = img.size[0]
-    print
-    "%dx%d pixels" % img.size
-    # Create bytearray for the entire image
-    # R, G, B byte per pixel, plus extra '0' byte at end for latch.
-    print
-    "Allocating..."
-    column = [0 for x in range(image_width)]
-    for x in range(image_width):
-        if args.chip_type == "SM16716":
-            column[x] = bytearray(args.array_height * PIXEL_SIZE_SM16716)
-        else:
-            column[x] = bytearray(args.array_height * PIXEL_SIZE + 1)
-
-    print
-    "Process Image..."
-    for x in range(image_width):
-        for y in range(args.array_height):
-            value = input_image[x, y]
-            y3 = y * 3
-            column[x][y3] = value[0]
-            column[x][y3 + 1] = value[1]
-            column[x][y3 + 2] = value[2]
-
-    print
-    "Displaying..."
-    while True:
-        for x in range(image_width):
-            write_stream(column[x])
-            spidev.flush()
-            time.sleep(0.001)
-        time.sleep((args.refresh_rate / 1000.0))
+#
+# def strip():
+#     img = Image.open(args.filename).convert("RGB")
+#     input_image = img.load()
+#     image_width = img.size[0]
+#     print
+#     "%dx%d pixels" % img.size
+#     # Create bytearray for the entire image
+#     # R, G, B byte per pixel, plus extra '0' byte at end for latch.
+#     print
+#     "Allocating..."
+#     column = [0 for x in range(image_width)]
+#     for x in range(image_width):
+#         if args.chip_type == "SM16716":
+#             column[x] = bytearray(args.array_height * PIXEL_SIZE_SM16716)
+#         else:
+#             column[x] = bytearray(args.array_height * PIXEL_SIZE + 1)
+#
+#     print
+#     "Process Image..."
+#     for x in range(image_width):
+#         for y in range(args.array_height):
+#             value = input_image[x, y]
+#             y3 = y * 3
+#             column[x][y3] = value[0]
+#             column[x][y3 + 1] = value[1]
+#             column[x][y3 + 2] = value[2]
+#
+#     print
+#     "Displaying..."
+#     while True:
+#         for x in range(image_width):
+#             write_stream(column[x])
+#             spidev.flush()
+#             time.sleep(0.001)
+#         time.sleep((args.refresh_rate / 1000.0))
 
 
 def array():
