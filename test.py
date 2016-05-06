@@ -1,5 +1,6 @@
 import spidev
 from colors import *
+from pprint import pprint
 
 spi = spidev.SpiDev()
 
@@ -14,7 +15,7 @@ for i in range(256):
 def all_on():
     pixel_output = bytearray(num_leds * PIXEL_SIZE + 3)
     for led in range(num_leds):
-        pixel_output[led * PIXEL_SIZE] = filter_pixel(WHITE, 1)
+        pixel_output[led * PIXEL_SIZE:] = filter_pixel(WHITE, 1)
     spi.writebytes(pixel_output)
     spi.flush()
 
@@ -28,6 +29,7 @@ def filter_pixel(input_pixel, brightness):
     output_pixel[0] = gamma[input_pixel[0]]
     output_pixel[1] = gamma[input_pixel[1]]
     output_pixel[2] = gamma[input_pixel[2]]
+    pprint(output_pixel)
     return output_pixel
 
 
