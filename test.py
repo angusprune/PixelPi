@@ -18,7 +18,7 @@ def all_on():
     for led in range(num_leds):
         pixel_output[led * PIXEL_SIZE:] = filter_pixel(WHITE, 1)
     spi.writebytes(pixel_output)
-    spi.flush()
+    spi.xfer()
 
 def filter_pixel(input_pixel, brightness):
     output_pixel = bytearray(PIXEL_SIZE)
