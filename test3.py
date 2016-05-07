@@ -4,6 +4,5 @@ import time
 
 leds = ws2801.WS2801_Chain(300)
 
-leds.cycle()
-
-leds.set_off()
+leds.set_red()
+pprint(leds.ics)
