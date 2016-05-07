@@ -16,4 +16,4 @@ time.sleep(10)
 
 leds.all_off()
 leds.write()
-pprint(leds)
+pprint(leds.ics)
