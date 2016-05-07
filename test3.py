@@ -17,3 +17,5 @@ pprint(leds.ics)
 leds.all_off()
 leds.write()
 pprint(leds.ics)
+
+leds.cycle()
